@@ -1,0 +1,15 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Filmueb</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<form th:action="@{/registration}" method="post" th:object="${user}">
+    <input type="text" name="name" th:field="*{username}"/>
+    <input type="password" name="pass1" th:field="*{password}"/>
+    <input type="password" name="pass2" th:field="${pass}"/>
+    <input type="submit" value="Rejestruj"/>
+</form>
+</body>
+</html>
