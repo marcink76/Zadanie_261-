@@ -49,6 +49,7 @@ public class FilmController {
         movie.setId(maxId + 1);
         filmRepository.addMovie(movie);
 
+
         return movie.toString() + "<br/> został dodany"; //tymczasowo
     }
 }

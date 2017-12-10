@@ -2,6 +2,9 @@ package pl.javastart.filmueb.model;
 
 import pl.javastart.filmueb.Comment;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,13 +14,15 @@ import java.util.List;
  * @param id to id filmu, ktore powinno byc nadawane automatycznie
  * @param comments to komentarze dot. konkretnego filmu
  * */
+
 public class Movie {
+
+    private Long id = 0L;
     private String title;
     private String description;
     private String category;
     private int year;
     private String photo;
-    private Long id = 0L;
     private List<Comment> comments = new ArrayList<>();
 
     public Movie(String title, String description, String category, int year, String photo, Long id) {

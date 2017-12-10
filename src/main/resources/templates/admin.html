@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Filmueb</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<h1>Administracja:</h1>
+<table>
+    <tr th:each="userList:${userList}">
+        <td th:text="${userList.id}">1</td>
+        <td th:text="${userList.enabled}">Marcin</td>
+        <td th:text="${userList.username}">UberAdmin</td>
+        <td><form th:action="@{/admin/changerole}" method="post">
+            <input type="radio" name="role" value="ROLE_ADMIN" label="admin" th:checked="true"/>
+            <input type="radio" name="role" value="ROLE_USER" label="user"/>
+            <input type="radio" name="role" value="ROLE_MODERATOR" label="moderator"/>
+            <input type="hidden" name="username" th:value="${userList.username}"/>
+            <input type="submit" value="Zmien rolę"/>
+        </form>
+        </td>
+    </tr>
+</table>
+
+</body>
+</html>
