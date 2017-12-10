@@ -8,22 +8,30 @@
 <div style="width: 999px; margin:auto">
     <img src="banner.png"/>
 </div>
+
+<div th:if="${role}=='ROLE_ADMIN'">
+    <a th:href="@{/admin}">Panel administratora</a>
+</div>
+<div th:if="${role}=='ROLE_MODERATOR'">
+    <a th:href="@{/moderator}">Panel moderatora</a>
+</div>
 <h3 style="color: #5900cc">Lista filmów w bazie:</h3>
 
 
-<p th:each="elem: ${lista}">
-<table style="width: 1000px"   class="fixed">
-    <col width="200px" />
-    <col width="200px" align="left" />
-    <col width="600px" />
 
-    <tr >
-        <th >
-                <a  style="width: 100px; " th:href="${'/film?id=' + elem.id}">
-                    <img th:src="'movie'+${elem.id}+'.jpg'" style="width:100px;height:95px;" th:hspace="50"/></a>
+<p th:each="elem: ${lista}">
+<table style="width: 1000px" class="fixed">
+    <col width="200px"/>
+    <col width="200px" align="left"/>
+    <col width="600px"/>
+
+    <tr>
+        <th>
+            <a style="width: 100px; " th:href="${'/film?id=' + elem.id}">
+                <img th:src="'movie'+${elem.id}+'.jpg'" style="width:100px;height:95px;" th:hspace="50"/></a>
         </th>
         <th>
-            <a  th:href="${'/film?id=' + elem.id}" th:text="${elem.title}"> </a>
+            <a th:href="${'/film?id=' + elem.id}" th:text="${elem.title}"> </a>
         </th>
         <th>
             <a th:text="${elem.description}"></a>

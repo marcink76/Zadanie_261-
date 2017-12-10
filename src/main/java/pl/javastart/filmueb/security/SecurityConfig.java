@@ -15,28 +15,30 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private DataSource dataSource;
 
     @Autowired
-    public void confiAuthentication(AuthenticationManagerBuilder auth) throws Exception{
+    public void confiAuthentication(AuthenticationManagerBuilder auth) throws Exception {
         auth.jdbcAuthentication().dataSource(dataSource)
                 .usersByUsernameQuery(
                         "select username, password, enabled from user where username=?")
                 .authoritiesByUsernameQuery(
-                        "select username, role from user_role where username=?");
+                        "select username, role from user where username=?");
     }
 
     @Override
-    protected void configure (HttpSecurity http) throws Exception{
+    protected void configure(HttpSecurity http) throws Exception {
         http.
                 authorizeRequests()
                 .antMatchers("/banner.png").permitAll()
-                .antMatchers("/register").permitAll()
+                .antMatchers("/registration/*").permitAll()
                 .antMatchers("/login").permitAll()
-                .antMatchers("/admin").hasRole("ADMIN")
+                .antMatchers("/admin/*").hasRole("ADMIN")
+                .antMatchers("/moderator/*").hasRole("MODERATOR")
+                .antMatchers("/users/*").hasRole("MODERATOR")
                 .antMatchers("/users").hasRole("USER")
 
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
-                    .loginPage("/login")
+                .loginPage("/login")
                 .and();
     }
 }

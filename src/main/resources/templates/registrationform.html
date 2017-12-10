@@ -5,9 +5,13 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 <body>
-<form th:action="@{/registration}" method="post" th:object="${user}">
+<form th:action="@{/registration/adduser1}" method="post" th:object="${user}">
+    <h1>Rejestracja</h1>
+    <p>Podaj użytkownika</p>
     <input type="text" name="name" th:field="*{username}"/>
+    <p>Podaj podaj hasło</p>
     <input type="password" name="pass1" th:field="*{password}"/>
+    <p>Podaj potwierdź hasło</p>
     <input type="password" name="pass2" th:field="${pass}"/>
     <input type="submit" value="Rejestruj"/>
 </form>

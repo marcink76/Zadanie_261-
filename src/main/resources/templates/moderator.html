@@ -12,14 +12,11 @@
         <td th:text="${userList.enabled}">Marcin</td>
         <td th:text="${userList.username}">UberAdmin</td>
         <td>
-            <form th:action="@{/admin/changerole}" method="post">
-
+            <form th:action="@{/moderator/changerole}" method="post">
                 <label>User:</label>
                 <input type="radio" name="role" value="ROLE_USER" th:checked="${userList.role=='ROLE_USER'}"/>
                 <label>Moderator:</label>
                 <input type="radio" name="role" value="ROLE_MODERATOR" th:checked="${userList.role=='ROLE_MODERATOR'}"/>
-                <label>Admin:</label>
-                <input type="radio" name="role" value="ROLE_ADMIN" th:checked="${userList.role=='ROLE_ADMIN'}"/>
                 <input type="hidden" name="username" th:value="${userList.username}"/>
                 <input type="submit" value="Zmien rolę"/>
             </form>
