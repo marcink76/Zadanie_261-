@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import pl.javastart.filmueb.model.User;
 import pl.javastart.filmueb.repositories.UserRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -21,8 +22,10 @@ public class ModController {
 
     @GetMapping("")
     public String admin(Model model) {
-        //List<User> userList = userRepository.findAll();
-        List<User> userList = userRepository.getAllByRoleAndRole("ROLE_USER", "ROLE_MODERATOR");
+        List<String> roles = new ArrayList<>();
+        roles.add("ROLE_MODERATOR");
+        roles.add("ROLE_USER");
+        List<User> userList = userRepository.getAllByRoleIn(roles);
 
         model.addAttribute("userList", userList);
         return "moderator";

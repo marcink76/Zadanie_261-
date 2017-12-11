@@ -8,14 +8,14 @@
 <h1>Administracja:</h1>
 <table>
     <tr th:each="userList:${userList}">
-        <td th:text="${userList.id}">1</td>
-        <td th:text="${userList.enabled}">Marcin</td>
-        <td th:text="${userList.username}">UberAdmin</td>
-        <td>
+        <td style="width: 20px" th:text="${userList.id}">1</td>
+        <td style="width: 150px" th:text="${userList.enabled}">Marcin</td>
+        <td style="width: 150px" th:text="${userList.username}">UberAdmin</td>
+        <td style="width: 400px">
             <form th:action="@{/admin/changerole}" method="post">
-
                 <label>User:</label>
-                <input type="radio" name="role" value="ROLE_USER" th:checked="${userList.role=='ROLE_USER'}"/>
+                <input style="" type="radio" name="role" value="ROLE_USER"
+                       th:checked="${userList.role=='ROLE_USER'}"/>
                 <label>Moderator:</label>
                 <input type="radio" name="role" value="ROLE_MODERATOR" th:checked="${userList.role=='ROLE_MODERATOR'}"/>
                 <label>Admin:</label>
